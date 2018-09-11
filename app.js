@@ -33,38 +33,15 @@ app.post('/collect', function(req, res){
     // res.status(200).type('json').send(challenge);
 
 	var channel = {
-		id: 	req.body.channel_id,
-		name: 	req.body.channel_name
+		id: 	req.body.event.item.channel,
 	};
 	var user = {
-		id: 	req.body.user_id
+		id: 	req.body.event.user
 	};
-	var msgText = req.body.text;
-	var teamDomain = req.body.team_domain;
+	
+	var teamDomain = req.body.team_id;
 
-
-	function searchM(regex){
-		var searchStr = msgText.match(regex);
-		if(searchStr != null){
-			return searchStr.length;
-		}
-		return 0;
-	};
-
-	function searchS(regex){
-		var searchStr = msgText.split(regex);
-		if(searchStr != undefined){
-			return searchStr.length;
-		}
-		return 0;
-	};
-
-
-	var wordCount = searchS(/\s+\b/);
-	var emojiCount = searchM(/:[a-z_0-9]*:/g);
-	var exclaCount = searchM(/!/g);
-	var questionMark = searchM(/\?/g);
-	var elipseCount = searchM(/\.\.\./g);
+	var emojiName = req.body.event.reaction;
 
 
 	//Structure Data
@@ -75,21 +52,14 @@ app.post('/collect', function(req, res){
 		ds:  	"slack", //data source
 		cs: 	"slack", // campaign source
 		cd1: 	user.id,
-		cd2: 	channel.name,
-		cd3: 	msgText,
-		cm1: 	wordCount,
-		cm2: 	emojiCount,
-		cm3: 	exclaCount,
-	//	cm4: 	letterCount,
-		cm5: 	elipseCount, 
-		cm6: 	questionMark, //need to set up in GA
+		cd2: 	channel.id,
+		cm1: 	emojiCount,
 		dh:		teamDomain+".slack.com",
-		dp:		"/"+channel.name,
-		dt:		"Slack Channel: "+channel.name,
+		dp:		"/"+channel.id,
+		dt:		"Slack Channel: "+channel.id,
 		t: 		"event",
-		ec: 	"slack: "+ channel.name + "|" + channel.id,
+		ec: 	"slack: " + channel.id,
 		ea: 	"post by " + user.id,
-		el: 	msgText,
 		ev: 	1 
 	};
 	console.log(JSON.stringify(data));
