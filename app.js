@@ -22,14 +22,13 @@ app.use(bodyParser.json({ type: 'application/vnd.api+json' }));
 //Routes
 app.get('/', function(req, res){
 	res.send('here I am');
-	console.log(req);
 	
 });
 
 app.post('/collect', function(req, res){
 	
 	console.log(req);
-	var challenge = {'challenge': req.challenge};
+	var challenge = {'challenge': req.body.challenge};
 
     res.status(200).type('json').send(challenge);
 
