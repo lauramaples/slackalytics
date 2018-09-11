@@ -21,10 +21,14 @@ app.use(bodyParser.json({ type: 'application/vnd.api+json' }));
 
 //Routes
 app.get('/', function(req, res){
-	res.send('here');
+	res.send('here I am');
+	
 });
 
 app.post('/collect', function(req, res){
+	console.log(req);
+
+
 
 	var channel = {
 		id: 	req.body.channel_id,
