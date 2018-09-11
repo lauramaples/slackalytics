@@ -26,8 +26,9 @@ app.get('/', function(req, res){
 });
 
 app.post('/collect', function(req, res){
+	
+	res.json([req.challenge]);
 	console.log(req);
-
 
 
 	var channel = {
