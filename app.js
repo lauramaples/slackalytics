@@ -22,18 +22,16 @@ app.use(bodyParser.json({ type: 'application/vnd.api+json' }));
 //Routes
 app.get('/', function(req, res){
 	res.send('here I am');
+	console.log(req);
 	
 });
 
 app.post('/collect', function(req, res){
 	
 	console.log(req);
+	var challenge = {"challenge": req.challenge};
 
-	
-    res.send(JSON.stringify({"challenge": req.challenge}));
-	
-	
-
+    res.status(200).send(challenge);
 
 	var channel = {
 		id: 	req.body.channel_id,
