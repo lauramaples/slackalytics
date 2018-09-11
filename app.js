@@ -28,9 +28,9 @@ app.get('/', function(req, res){
 app.post('/collect', function(req, res){
 	
 	console.log(req);
-	var challenge = {'challenge': req.body.challenge};
+	// var challenge = {'challenge': req.body.challenge};
 
-    res.status(200).type('json').send(challenge);
+    // res.status(200).type('json').send(challenge);
 
 	var channel = {
 		id: 	req.body.channel_id,
