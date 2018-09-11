@@ -28,7 +28,10 @@ app.get('/', function(req, res){
 app.post('/collect', function(req, res){
 	
 	console.log(req);
-	res.json([req.challenge]);
+
+	res.setHeader('Content-Type', 'text/plain');
+    res.send(req.challenge);
+	
 	
 
 
