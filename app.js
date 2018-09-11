@@ -27,8 +27,9 @@ app.get('/', function(req, res){
 
 app.post('/collect', function(req, res){
 	
-	res.json([req.challenge]);
 	console.log(req);
+	res.json([req.challenge]);
+	
 
 
 	var channel = {
@@ -98,7 +99,7 @@ app.post('/collect', function(req, res){
 		function(error, resp, body){
 		console.log(error);
 	})
-	res.send("OK")
+	
 });
 
 //Start Server
