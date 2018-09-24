@@ -31,8 +31,6 @@ app.post('/collect', function(req, res){
 	// var challenge = {'challenge': req.body.challenge};
 	// res.status(200).type('json').send(challenge);
 	
-	console.log(req);
-
 	var channel = {
 		id: 	req.body.event.item.channel,
 	};
@@ -63,12 +61,16 @@ app.post('/collect', function(req, res){
 		ea: 	"post by " + user.id,
 		ev: 	1 
 	};
-	console.log(JSON.stringify(data));
-	console.log(req.body);
+
+	console.log("Request body: " + req.body);
+	console.log("JSON.stringify data: " + JSON.stringify(data));
+	
 	//Make Post Request	
 	request.post("https://www.google-analytics.com/collect?" + qs.stringify(data), 
 		function(error, resp, body){
-		console.log(error);
+		console.log("Response: " + resp)
+		console.log("Body: " + body)
+		console.log("Error: " + error);
 	})
 	
 });
