@@ -62,7 +62,7 @@ app.post('/collect', function(req, res){
 		ev: 	1 
 	};
 
-	console.log("Request body: " + req.body);
+	console.log("Request: " + req);
 	console.log("JSON.stringify data: " + JSON.stringify(data));
 	
 	//Make Post Request	
