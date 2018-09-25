@@ -28,8 +28,8 @@ app.get('/', function(req, res){
 app.post('/collect', function(req, res){
 	
 	
-	// var challenge = {'challenge': req.body.challenge};
-	// res.status(200).type('json').send(challenge);
+	var challenge = {'challenge': req.body.challenge};
+	res.status(200).type('json').send(challenge);
 	
 	var channel = {
 		id: 	req.body.event.item.channel,
