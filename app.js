@@ -29,8 +29,8 @@ app.get('/', function(req, res){
 app.post('/collect', function(req, res){
 	
 	console.log(req);
-	var challenge = {'challenge': req.body.challenge};
-	res.status(200).type('json').send(challenge);
+	//var challenge = {'challenge': req.body.challenge};
+	//res.status(200).type('json').send(challenge);
 	
 	var channel = {
 		id: 	req.body.event.item.channel,
@@ -52,8 +52,6 @@ app.post('/collect', function(req, res){
 		ds:  	"slack", //data source
 		cs: 	"slack", // campaign source
 		cd1: 	user.id,
-		cd2: 	channel.id,
-		cm1: 	emojiName,
 		dh:		teamDomain+".slack.com",
 		dp:		"/"+channel.id,
 		dt:		"Slack Channel: "+channel.id,
@@ -65,6 +63,7 @@ app.post('/collect', function(req, res){
 
 	console.log("Request: " + req);
 	console.log("JSON.stringify data: " + JSON.stringify(data));
+	console.log("JSON.stringify request: " + JSON.stringify(req));
 	
 	//Make Post Request	
 	request.post("https://www.google-analytics.com/collect?" + qs.stringify(data), 
